@@ -1,8 +1,12 @@
 <?php
 
+namespace App;
+
 require_once '../vendor/autoload.php';
 
 use Dotenv\Dotenv;
+use PDO;
+use PDOException;
 
 class Database{
     private $host;
