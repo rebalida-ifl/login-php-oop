@@ -7,7 +7,7 @@ use PDOException;
 
 class User{
     private $conn;
-    private $table = 'user-table';
+    private $table = 'usertable';
 
     public $id;
     public $email;
@@ -19,7 +19,7 @@ class User{
     }
 
     public function register(){
-        $query = 'INSERT INTO' . $this->table . '(email, username, password) VALUES (:email, :username, :password)';
+        $query = 'INSERT INTO ' . $this->table . ' (email, username, password) VALUES (:email, :username, :password)';
         $stmt = $this->conn->prepare($query);
 
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
@@ -37,7 +37,7 @@ class User{
     }
 
     public function login(){
-        $query = 'SELECT * FROM' . $this->table . 'WHERE email = :email LIMIT 1';
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE email = :email LIMIT 1';
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':email', $this->email); 
         $stmt->execute();
@@ -54,7 +54,7 @@ class User{
     }
 
     public function emailExist(){
-        $query = 'SELECT * FROM' . $this->table . 'WHERE email = :email LIMIT 1';
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE email = :email LIMIT 1';
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':email', $this->email);
         $stmt->execute(); 

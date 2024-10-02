@@ -16,7 +16,7 @@ class Database{
     private $conn;
 
     public function __construct(){
-        $dotenv = Dotenv::createImmutable(__DIR__, '/../');
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
 
         $this->host = $_ENV['DB_HOST'];
