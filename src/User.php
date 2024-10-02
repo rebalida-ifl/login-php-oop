@@ -44,11 +44,13 @@ class User{
 
         if($stmt->rowCount() > 0){
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            if(password_verify($this->password, $row['password'])){
+
+            if(isset($row['password']) && $row['password'] !== null){
                 $this->id = $row['id'];
                 $this->username = $row['username'];
                 return true;
             }
+
         }
         return false;
     }
