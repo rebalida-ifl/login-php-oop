@@ -16,6 +16,7 @@ $user = new User($db);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user->email = $_POST['email'];
+        $user->password = $_POST['password'];
 
         if($user->login()){
             $_SESSION['id'] = $user->id;
